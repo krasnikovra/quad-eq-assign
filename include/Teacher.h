@@ -16,9 +16,9 @@ public:
         _solutions(std::vector<Solution>()), _results(std::map<const Student*, Result>()) {}
     void ClearResults() noexcept;
     void ClearSolutions() noexcept;
-    void CheckSolutions();
+    void CheckSolutions() noexcept;
     void PublishResults() const noexcept;
-    friend void Student::SendSolution(const QuadEq&, Teacher&) const;
+    friend void Student::SendSolution(const QuadEq&, Teacher&) const noexcept;
 private:
     struct Result {
         size_t solved, total;

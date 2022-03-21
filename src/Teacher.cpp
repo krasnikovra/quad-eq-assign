@@ -12,7 +12,7 @@ void Teacher::ClearSolutions() noexcept {
     _solutions.clear();
 }
 
-void Teacher::CheckSolutions() {
+void Teacher::CheckSolutions() noexcept {
     for (auto& solution : _solutions) {
         ++_results[solution.pstudent].total;
         if (solution.eqRoots == SolveQuadEqCorrect(solution.eq))

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void Student::SendSolution(const QuadEq& eq, Teacher& teacher) const {
+void Student::SendSolution(const QuadEq& eq, Teacher& teacher) const noexcept {
     teacher._solutions.push_back(Solution(eq, SolveQuadEq(eq), this));
 }
 
