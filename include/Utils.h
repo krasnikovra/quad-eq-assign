@@ -23,9 +23,9 @@ struct QuadEqRoots {
 struct Solution {
     QuadEq eq;
     QuadEqRoots eqRoots;
-    const Student* pstudent;
-    Solution(const QuadEq& eq_, const QuadEqRoots& eqRoots_, const Student* pstudent_) noexcept :
-        eq(eq_), eqRoots(eqRoots_), pstudent(pstudent_) {
+    std::string name;
+    Solution(const QuadEq& eq_, const QuadEqRoots& eqRoots_, const std::string& name_) noexcept :
+        eq(eq_), eqRoots(eqRoots_), name(name_) {
     }
 };
 

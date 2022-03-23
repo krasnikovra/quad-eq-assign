@@ -9,11 +9,11 @@
 class Teacher {
 public:
     Teacher() noexcept : _name("Undefined Teacher"),
-        _solutions(std::vector<Solution>()), _results(std::map<const Student*, Result>()) {}
+        _solutions(std::vector<Solution>()), _results(std::map<std::string, Result>()) {}
     Teacher(const Teacher& teacher) noexcept : _name(teacher._name),
-        _solutions(std::vector<Solution>()), _results(std::map<const Student*, Result>()) {}
+        _solutions(std::vector<Solution>()), _results(std::map<std::string, Result>()) {}
     Teacher(const std::string& name) noexcept : _name(name),
-        _solutions(std::vector<Solution>()), _results(std::map<const Student*, Result>()) {}
+        _solutions(std::vector<Solution>()), _results(std::map<std::string, Result>()) {}
     void ClearResults() noexcept;
     void ClearSolutions() noexcept;
     void CheckSolutions() noexcept;
@@ -25,6 +25,6 @@ private:
     };
     std::string _name;
     std::vector<Solution> _solutions;
-    std::map<const Student*, Result> _results;
+    std::map<std::string, Result> _results;
 };
 

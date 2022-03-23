@@ -22,6 +22,10 @@ string RandomFullname() noexcept {
     return FNAMES[rand() % FNAMES.size()] + " " + SNAMES[rand() % SNAMES.size()];
 }
 
+string Fullname(const string& fname, const string& sname) {
+    return fname + " " + sname;
+}
+
 void GenerateSomeQuadEqs(const string& filename, const size_t count, 
     const double minQuot, const double maxQuot) {
     ofstream fileOut(filename);
@@ -35,20 +39,24 @@ void GenerateSomeQuadEqs(const string& filename, const size_t count,
 }
 
 vector<unique_ptr<Student>> GenerateSomeStudents(const size_t count) noexcept {
-    vector<unique_ptr<Student>> res(count);
-    for (auto& pstudent : res) {
-        switch (rand() % 3) {
-        case 0:
-            pstudent = move(make_unique<BadStudent>(RandomFullname()));
-            break;
-        case 1:
-            pstudent = move(make_unique<MidStudent>(RandomFullname()));
-            break;
-        case 2:
-            pstudent = move(make_unique<GoodStudent>(RandomFullname()));
-            break;
+    const size_t maxCount = FNAMES.size() * SNAMES.size();
+    vector<unique_ptr<Student>> res;
+    for (size_t i = 0; i < FNAMES.size(); i++)
+        for (size_t j = 0; j < SNAMES.size(); j++) {
+            if (res.size() >= count)
+                return res;
+            switch (rand() % 3) {
+            case 0:
+                res.push_back(move(make_unique<BadStudent>(Fullname(FNAMES[i], SNAMES[j]))));
+                break;
+            case 1:
+                res.push_back(move(make_unique<MidStudent>(Fullname(FNAMES[i], SNAMES[j]))));
+                break;
+            case 2:
+                res.push_back(move(make_unique<GoodStudent>(Fullname(FNAMES[i], SNAMES[j]))));
+                break;
+            }
         }
-    }
     return res;
 }
 
@@ -79,7 +87,7 @@ int main() {
         teacher.CheckSolutions();
         // ... and after some time he decide to publish results
         teacher.PublishResults();
-        // after all, teacher clears results, solutins to receive and publish new assignment result
+        // after all, teacher clears results, solutions to receive and publish new test result
         teacher.ClearSolutions();
         teacher.ClearResults();
         // now teacher is ready for the new assignment

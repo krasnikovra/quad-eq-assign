@@ -14,15 +14,15 @@ void Teacher::ClearSolutions() noexcept {
 
 void Teacher::CheckSolutions() noexcept {
     for (auto& solution : _solutions) {
-        ++_results[solution.pstudent].total;
+        ++_results[solution.name].total;
         if (solution.eqRoots == SolveQuadEqCorrect(solution.eq))
-            ++_results[solution.pstudent].solved;
+            ++_results[solution.name].solved;
     }
 }
 
 void Teacher::PublishResults() const noexcept {
     cout << "Teacher: " + _name << endl;
     for (auto& result : _results)
-        cout << result.first->GetName() << "\t " << result.second.solved << " of "
+        cout << result.first << "\t " << result.second.solved << " of "
             << result.second.total << endl;
 }
