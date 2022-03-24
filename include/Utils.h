@@ -1,10 +1,6 @@
 #pragma once
 #include <complex>
 
-#define NO_ROOTS QuadEqRoots(0, 0, 0)
-#define INF_ROOTS QuadEqRoots(0, 0, INT_MAX)
-
-class Student;
 using Complex = std::complex<double>;
 
 struct QuadEq {
@@ -13,11 +9,31 @@ struct QuadEq {
     QuadEq(const double a_, const double b_, const double c_) noexcept : a(a_), b(b_), c(c_) {}
 };
 
-struct QuadEqRoots {
-    Complex x1, x2;
-    size_t cnt;
-    QuadEqRoots(const Complex& x1_, const Complex& x2_, const size_t cnt_) noexcept : 
-        x1(x1_), x2(x2_), cnt(cnt_) {}
+class QuadEqRoots {
+public:
+    enum class Count {
+        NO,
+        ONE,
+        TWO,
+        INF
+    };
+
+    QuadEqRoots(const Complex& x) : _x1(x), _x2(x), _count(Count::ONE) {}
+    QuadEqRoots(const Complex& x1, const Complex& x2) : _x1(x1), _x2(x2) {
+        _count = x1 == x2 ? Count::ONE : Count::TWO; 
+    }
+    Complex GetX1() const noexcept { return _x1; }
+    Complex GetX2() const noexcept { return _x2; }
+    Count GetCount() const noexcept { return _count; }
+    static QuadEqRoots NoRoots() noexcept { return QuadEqRoots(0, 0, Count::NO); };
+    static QuadEqRoots InfRoots() noexcept { return QuadEqRoots(0, 0, Count::INF); };
+    bool operator==(const QuadEqRoots& roots) noexcept;
+private:
+    QuadEqRoots(const Complex& x1, const Complex& x2, const Count& count) noexcept :
+        _x1(x1), _x2(x2), _count(count) {}
+
+    Complex _x1, _x2;
+    Count _count;
 };
 
 struct Solution {
@@ -30,5 +46,5 @@ struct Solution {
 };
 
 bool operator==(const Complex& a, const Complex& b) noexcept;
-bool operator==(const QuadEqRoots& a, const QuadEqRoots& b) noexcept;
+
 QuadEqRoots SolveQuadEqCorrect(const QuadEq& eq) noexcept;

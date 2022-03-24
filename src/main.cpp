@@ -22,7 +22,7 @@ string RandomFullname() noexcept {
     return FNAMES[rand() % FNAMES.size()] + " " + SNAMES[rand() % SNAMES.size()];
 }
 
-string Fullname(const string& fname, const string& sname) {
+string Fullname(const string& fname, const string& sname) noexcept {
     return fname + " " + sname;
 }
 
@@ -75,6 +75,7 @@ int main() {
     const double minQuot = -100;
     const double maxQuot = 100;
     const string filename = "input.txt";
+
     Teacher teacher(RandomFullname());
     // let us have some students
     auto students = GenerateSomeStudents(studentsCnt);
