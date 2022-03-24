@@ -19,9 +19,8 @@ public:
     };
 
     QuadEqRoots(const Complex& x) : _x1(x), _x2(x), _count(Count::ONE) {}
-    QuadEqRoots(const Complex& x1, const Complex& x2) : _x1(x1), _x2(x2) {
-        _count = x1 == x2 ? Count::ONE : Count::TWO; 
-    }
+    QuadEqRoots(const Complex& x1, const Complex& x2) : _x1(x1), _x2(x2),
+        _count(x1 == x2 ? Count::ONE : Count::TWO) {}
     Complex GetX1() const noexcept { return _x1; }
     Complex GetX2() const noexcept { return _x2; }
     Count GetCount() const noexcept { return _count; }
