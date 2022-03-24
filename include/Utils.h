@@ -40,8 +40,7 @@ struct Solution {
     QuadEqRoots eqRoots;
     std::string name;
     Solution(const QuadEq& eq_, const QuadEqRoots& eqRoots_, const std::string& name_) noexcept :
-        eq(eq_), eqRoots(eqRoots_), name(name_) {
-    }
+        eq(eq_), eqRoots(eqRoots_), name(name_) {}
 };
 
 bool operator==(const Complex& a, const Complex& b) noexcept;
