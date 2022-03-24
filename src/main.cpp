@@ -39,7 +39,6 @@ void GenerateSomeQuadEqs(const string& filename, const size_t count,
 }
 
 vector<unique_ptr<Student>> GenerateSomeStudents(const size_t count) noexcept {
-    const size_t maxCount = FNAMES.size() * SNAMES.size();
     vector<unique_ptr<Student>> res;
     for (size_t i = 0; i < FNAMES.size(); i++)
         for (size_t j = 0; j < SNAMES.size(); j++) {
