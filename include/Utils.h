@@ -21,9 +21,9 @@ public:
     QuadEqRoots(const Complex& x) noexcept : _x1(x), _x2(x), _count(Count::ONE) {}
     QuadEqRoots(const Complex& x1, const Complex& x2) noexcept : _x1(x1), _x2(x2),
         _count(x1 == x2 ? Count::ONE : Count::TWO) {}
-    Complex GetX1() const noexcept { return _x1; }
-    Complex GetX2() const noexcept { return _x2; }
-    Count GetCount() const noexcept { return _count; }
+    Complex getX1() const noexcept { return _x1; }
+    Complex getX2() const noexcept { return _x2; }
+    Count getCount() const noexcept { return _count; }
     static QuadEqRoots NoRoots() noexcept { return QuadEqRoots(0, 0, Count::NO); };
     static QuadEqRoots InfRoots() noexcept { return QuadEqRoots(0, 0, Count::INF); };
     bool operator==(const QuadEqRoots& roots) noexcept;

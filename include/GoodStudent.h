@@ -6,6 +6,6 @@ class GoodStudent : public Student {
 public:
     GoodStudent() noexcept : Student() {}
     GoodStudent(const std::string& name) noexcept : Student(name) {}
-    QuadEqRoots SolveQuadEq(const QuadEq& eq) const noexcept override;
+    QuadEqRoots solveQuadEq(const QuadEq& eq) const noexcept override;
 };
 

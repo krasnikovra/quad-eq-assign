@@ -4,15 +4,15 @@
 
 using namespace std;
 
-void Teacher::ClearResults() noexcept {
+void Teacher::clearResults() noexcept {
     _results.clear();
 }
 
-void Teacher::ClearSolutions() noexcept {
+void Teacher::clearSolutions() noexcept {
     _solutions.clear();
 }
 
-void Teacher::CheckSolutions() noexcept {
+void Teacher::checkSolutions() noexcept {
     for (auto& solution : _solutions) {
         ++_results[solution.name].total;
         if (solution.eqRoots == SolveQuadEqCorrect(solution.eq))
@@ -20,7 +20,7 @@ void Teacher::CheckSolutions() noexcept {
     }
 }
 
-void Teacher::PublishResults() const noexcept {
+void Teacher::publishResults() const noexcept {
     cout << "Teacher: " + _name << endl;
     for (auto& result : _results)
         cout << result.first << "\t " << result.second.solved << " of "

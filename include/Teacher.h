@@ -14,11 +14,11 @@ public:
         _solutions(std::vector<Solution>()), _results(std::map<std::string, Result>()) {}
     Teacher(const std::string& name) noexcept : _name(name),
         _solutions(std::vector<Solution>()), _results(std::map<std::string, Result>()) {}
-    void ClearResults() noexcept;
-    void ClearSolutions() noexcept;
-    void CheckSolutions() noexcept;
-    void PublishResults() const noexcept;
-    friend void Student::SendSolution(const QuadEq&, Teacher&) const noexcept;
+    void clearResults() noexcept;
+    void clearSolutions() noexcept;
+    void checkSolutions() noexcept;
+    void publishResults() const noexcept;
+    friend void Student::sendSolution(const QuadEq&, Teacher&) const noexcept;
 private:
     struct Result {
         size_t solved, total;

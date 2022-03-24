@@ -63,7 +63,7 @@ vector<unique_ptr<Student>> GenerateSomeStudents(const size_t count) noexcept {
 void StudentsSolveTaskFromFile(const string& filename, const vector<unique_ptr<Student>>& students,
     Teacher& teacher) {
     for (auto& pstudent : students)
-        pstudent->SendFileAssignmentSolution(filename, teacher);
+        pstudent->sendFileAssignmentSolution(filename, teacher);
 }
 
 int main() {
@@ -85,12 +85,12 @@ int main() {
         // each of them solve quadratic equations from the 'filename' file
         StudentsSolveTaskFromFile(filename, students, teacher);
         // ... graduation week comes and teacher check students' solutions
-        teacher.CheckSolutions();
+        teacher.checkSolutions();
         // ... and after some time he decide to publish results
-        teacher.PublishResults();
+        teacher.publishResults();
         // after all, teacher clears results, solutions to receive and publish new test result
-        teacher.ClearSolutions();
-        teacher.ClearResults();
+        teacher.clearSolutions();
+        teacher.clearResults();
         // now teacher is ready for the new assignment
     }
     catch (const exception& err) {

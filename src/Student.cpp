@@ -4,11 +4,11 @@
 
 using namespace std;
 
-void Student::SendSolution(const QuadEq& eq, Teacher& teacher) const noexcept {
-    teacher._solutions.push_back(Solution(eq, SolveQuadEq(eq), GetName()));
+void Student::sendSolution(const QuadEq& eq, Teacher& teacher) const noexcept {
+    teacher._solutions.push_back(Solution(eq, solveQuadEq(eq), getName()));
 }
 
-void Student::SendFileAssignmentSolution(const string& filename, Teacher& teacher) const {
+void Student::sendFileAssignmentSolution(const string& filename, Teacher& teacher) const {
     ifstream fileIn(filename);
     if (!fileIn.is_open())
         throw runtime_error(string("Student ") + _name + string("Could not open ")
@@ -18,7 +18,7 @@ void Student::SendFileAssignmentSolution(const string& filename, Teacher& teache
         fileIn >> eq.a >> eq.b >> eq.c;
         if (fileIn.fail())
             break;
-        SendSolution(eq, teacher);
+        sendSolution(eq, teacher);
     }
     fileIn.close();
 }
