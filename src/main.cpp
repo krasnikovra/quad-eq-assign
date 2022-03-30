@@ -46,13 +46,13 @@ vector<unique_ptr<Student>> GenerateSomeStudents(const size_t count) noexcept {
                 return res;
             switch (rand() % 3) {
             case 0:
-                res.push_back(move(make_unique<BadStudent>(Fullname(FNAMES[i], SNAMES[j]))));
+                res.push_back(make_unique<BadStudent>(Fullname(FNAMES[i], SNAMES[j])));
                 break;
             case 1:
-                res.push_back(move(make_unique<MidStudent>(Fullname(FNAMES[i], SNAMES[j]))));
+                res.push_back(make_unique<MidStudent>(Fullname(FNAMES[i], SNAMES[j])));
                 break;
             case 2:
-                res.push_back(move(make_unique<GoodStudent>(Fullname(FNAMES[i], SNAMES[j]))));
+                res.push_back(make_unique<GoodStudent>(Fullname(FNAMES[i], SNAMES[j])));
                 break;
             }
         }
